@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA MENS WEAR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #bbbbbb;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 1em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 1em;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2em;
+        }
+
+        .hero img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 2em;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1em;
+            margin: 1em;
+            text-align: center;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 2em;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            margin-bottom: 1em;
+            padding: 0.5em;
+        }
+
+        button {
+            padding: 0.5em;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ＮＯＶＡ   ＭＥＮＳ   ＷＥＡＲ</h1>
+        <img src="img/brandbackpic.jpeg" alt="img">
+        <img src="" alt="">
+       
+        
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">MENS</a>
+        <a href="#">WOMENS</a>
+        <a href="#">Accessories</a>
+        <a href="#">Contact</a>
+        <a href="#">About</a>
+    </nav>
+
+    <div class="hero">
+        <img src="img/brandc.jpeg" alt="NOVA'S Style">
+        <h2>꧁༒☬ 𝔇𝔦𝔰𝔠𝔬𝔳𝔢𝔯 𝔶𝔬𝔲𝔯 𝔰𝔱𝔶𝔩𝔢 𝔴𝔦𝔱𝔥 𝔑𝔒𝔙𝔄 ☬༒꧂</h2>
+    </div>
+
+    <div class="products">
+        <div class="formals.jpeg">
+            <img src="img/Formals.jpeg" alt="formals">
+
+     <h3>FORMALS</h3>
+            <a href="#">Tuxedo</a>
+            <a href="#">Blazer</a>
+            <a href="#">Tuxido shirts</a>
+            <a href="#">Suit</a>
+                
+            </p>
+        </div>
+        <div class="casual">
+            <img src="img/casual.jpeg" alt="casual">
+
+            <h3>CASUALS</h3>
+            <a href="#">T-shirts</a>
+            <a href="#">Jeans</a>
+            <a href="#">Casual jackets</a>
+            <a href="#">Shirts</a>
+        </div>
+
+        <!-- Add more product divs as needed -->
+    </div>
+    
+<img src="img/world.jpeg" alt="locations"> 
+    <div class="contact"> 
+
+        <h2>Contact Us</h2> <br> <br>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="country">Country</label><span style="color: red !important; display: inline; float: none;">*</span>      
+        
+            <select id="country" name="country" class="form-control">
+                <option value="Select">Select</option>
+                
+               ion>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="Croatia">Croatia</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Denmark">Denmark</option>
+                <option value="Egypt">Egypt</option>
+               
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                         
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+                <option value="Iraq">Iraq</option>
+                <option value="Ireland">Ireland</option>
+                <option value="palestine">palestine</option>
+                <option value="Italy">Italy</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="Japan">Japan</option>
+                <option value="Jersey">Jersey</option>
+                
+                <option value="Kuwait">Kuwait</option>
+                <option value="Lebanon">Lebanon</option>
+                <option value="Morocco">Morocco</option>             
+                <option value="Pakistan">Pakistan</option>      
+                
+                <option value="Saudi Arabia">Saudi Arabia</option>
+                
+               
+                <option value="South Africa">South Africa</option>
+               
+                <option value="Spain">Spain</option>
+                <option value="Sri Lanka">Sri Lanka</option>
+                <option value="Sudan">Sudan</option>
+               
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+                <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+              
+               
+                <option value="Yemen">Yemen</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+            </select>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

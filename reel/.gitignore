@@ -1,0 +1,5 @@
+node_modules
+out/*
+!out/reel.mp4
+!out/cover.png
+.DS_Store

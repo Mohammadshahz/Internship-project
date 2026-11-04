@@ -6,6 +6,7 @@ import {clamp01, ease, lerp, prog} from '../engine/motion';
 import type {CounterPart, Part, SlotPart, TLine, Word} from '../engine/types';
 import {Accent} from './Accent';
 import {MotionBlur} from './MotionBlur';
+import {usePalette} from './palette';
 
 const W = theme.width;
 const H = theme.height;
@@ -23,6 +24,7 @@ const MASKED_ENTERS = new Set(['rise', 'mask', 'chars']);
 const MASKED_EXITS = new Set(['up', 'down']);
 
 interface Ctx {
+  accent: string;
   t: number;
   fs: number;
   tracking: number;
@@ -31,11 +33,23 @@ interface Ctx {
 
 // ─── Parts ──────────────────────────────────────────────────────────────────
 
-const textStyle = (p: Part, tracking: number): React.CSSProperties => ({
-  fontWeight: p.weight,
-  fontStyle: p.italic ? 'italic' : 'normal',
-  letterSpacing: `${trackingFor(p.weight) + tracking}em`,
-});
+const textStyle = (p: Part, tracking: number, accent?: string): React.CSSProperties =>
+  p.italic
+    ? {
+        // *accent* → italic serif
+        fontFamily: `"${theme.type.serif}"`,
+        fontStyle: 'italic',
+        fontWeight: 400,
+        fontSize: `${theme.type.serifScale}em`,
+        letterSpacing: `${-0.01 + tracking}em`,
+        color: accent,
+        lineHeight: 1 / theme.type.serifScale,
+      }
+    : {
+        fontWeight: p.weight,
+        fontStyle: 'normal',
+        letterSpacing: `${trackingFor(p.weight) + tracking}em`,
+      };
 
 const WordsInline: React.FC<{words: Word[]; ctx: Ctx; ghost?: boolean}> = ({words, ctx, ghost}) => (
   <span style={{display: 'inline-flex', columnGap: `${theme.type.wordGap}em`}}>
@@ -84,7 +98,7 @@ const Counter: React.FC<{part: CounterPart; ctx: Ctx; wordStart: number}> = ({pa
   return (
     <span
       style={{
-        ...textStyle(part, ctx.tracking),
+        ...textStyle(part, ctx.tracking, ctx.accent),
         display: 'inline-block',
         width: counterEm(part, ctx.tracking) * ctx.fs,
         textAlign: 'center',
@@ -106,7 +120,7 @@ const PartView: React.FC<{part: Part; ctx: Ctx; wordStart: number; ghost?: boole
   if (part.kind === 'slot') return <Slot part={part} ctx={ctx} ghost={ghost} />;
   if (part.kind === 'counter') return <Counter part={part} ctx={ctx} wordStart={wordStart} />;
 
-  const style = textStyle(part, ctx.tracking);
+  const style = textStyle(part, ctx.tracking, ctx.accent);
   const accentStart = wordStart + 14;
   const accentP = prog(ctx.t, accentStart, 18, ease.out);
   const hasAccent = part.underline || part.strike || part.circle;
@@ -346,6 +360,7 @@ export const TextLine: React.FC<{
   height: number;
   sceneDur: number;
 }> = ({line, t, fontSize, top, height, sceneDur}) => {
+  const pal = usePalette();
   if (line.enter === 'marquee') return <MarqueeLine line={line} t={t} fontSize={fontSize} top={top} height={height} />;
 
   // Nothing to draw before a line-level animation starts.
@@ -354,7 +369,7 @@ export const TextLine: React.FC<{
 
   const s = lineState(line, t, sceneDur);
   const sp = lineState(line, t - 1, sceneDur);
-  const ctx: Ctx = {t, fs: fontSize, tracking: s.tracking, line};
+  const ctx: Ctx = {t, fs: fontSize, tracking: s.tracking, line, accent: pal.accent};
   const justify = line.align === 'left' ? 'flex-start' : line.align === 'right' ? 'flex-end' : 'center';
 
   return (
@@ -389,7 +404,7 @@ export const TextLine: React.FC<{
             fontSize,
             lineHeight: 1,
             whiteSpace: 'nowrap',
-            color: theme.colors.text,
+            color: pal.text,
           }}
         >
           {line.words.map((w, i) => {
@@ -427,7 +442,8 @@ const MarqueeLine: React.FC<{line: TLine; t: number; fontSize: number; top: numb
   const x = pos(tl);
   let vx = x - pos(tl - 1);
   if (Math.abs(vx) > unit / 2) vx = dir * v; // loop wrap
-  const ctx: Ctx = {t, fs: fontSize, tracking: line.tracking, line};
+  const pal = usePalette();
+  const ctx: Ctx = {t, fs: fontSize, tracking: line.tracking, line, accent: pal.accent};
   let opacity = 1;
   let blur = 0;
   if (line.exitStart !== null) {
@@ -455,7 +471,7 @@ const MarqueeLine: React.FC<{line: TLine; t: number; fontSize: number; top: numb
           fontSize,
           lineHeight: 1,
           whiteSpace: 'nowrap',
-          color: theme.colors.text,
+          color: pal.text,
           transform: `translateX(${x}px)`,
         }}
       >

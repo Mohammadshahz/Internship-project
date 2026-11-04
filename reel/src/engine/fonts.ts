@@ -21,17 +21,22 @@ const FILES: Array<[number, 'normal' | 'italic', string]> = [
   [900, 'italic', 'InterDisplay-BlackItalic'],
 ];
 
+const SERIF: Array<['normal' | 'italic', string]> = [
+  ['normal', 'InstrumentSerif-Regular'],
+  ['italic', 'InstrumentSerif-Italic'],
+];
+
 let loaded = false;
 let promise: Promise<void> | null = null;
 
 const load = () => {
   if (!promise) {
+    const faces = [
+      ...FILES.map(([weight, style, file]) => new FontFace(theme.type.family, `url(${staticFile(`fonts/${file}.woff2`)}) format('woff2')`, {weight: String(weight), style})),
+      ...SERIF.map(([style, file]) => new FontFace(theme.type.serif, `url(${staticFile(`fonts/${file}.woff2`)}) format('woff2')`, {weight: '400', style})),
+    ];
     promise = Promise.all(
-      FILES.map(async ([weight, style, file]) => {
-        const face = new FontFace(theme.type.family, `url(${staticFile(`fonts/${file}.woff2`)}) format('woff2')`, {
-          weight: String(weight),
-          style,
-        });
+      faces.map(async (face) => {
         await face.load();
         document.fonts.add(face);
       }),

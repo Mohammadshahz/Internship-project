@@ -65,7 +65,7 @@ Edit **`src/config/script.ts`**. Each scene is one beat of the story:
 |---|---|
 | `**word**` | Black 900 |
 | `_word_` | ExtraLight 200 |
-| `*word*` | Italic |
+| `*word*` | Italic serif accent (Instrument Serif) |
 | `[word]` | Underline that draws on |
 | `~~word~~` | Strike-through that draws on (the word dims) |
 | `((word))` | Hand-drawn circle |
@@ -129,31 +129,46 @@ All audio settings are in **`src/config/audio.ts`**. Files go in `public/audio/`
 The bundled music bed and SFX are **original placeholders** synthesised with ffmpeg
 (`npm run audio:placeholders`). Replace them with licensed audio before publishing.
 
-## 5. Scene breakdown (AI automation script, 60 s at 100 BPM)
+## 5. Scene breakdown — "AI sales assistant for coaches" (60 s, 100 BPM)
 
-| # | Time (s) | Text | Animation | Transition in | Background |
-|---|---|---|---|---|---|
-| 1 | 0.0–2.4 | *Missing your* / **LEADS?** | words, punch | — | black |
-| 2 | 2.4–5.4 | *Every* **missed call** / *is a* / **missed client.** | rise → up | cut | grey |
-| 3 | 5.4–7.2 | **No worries.** | punch | cut | black |
-| 4 | 7.2–9.6 | *Here's the* / **SOLUTION** | words, tracking | whip | grey |
-| 5 | 9.6–12.6 | *The* / **FASTEST** / **TREND** / *in business right now.* | fromLeft, punch ×2, fromRight | panel up | black · spread |
-| 6 | 12.6–14.4 | **AI.** | punch (+ hit) | zoom | grey |
-| 7 | 14.4–18.0 | *Businesses are* / **{integrating → automating → scaling}** / *with AI.* | rise, word swap | cut | black · left |
-| 8 | 18.0–20.4 | *Will you go with* / **the trend?** | pop | push | grey |
-| 9 | 20.4–24.0 | **AI AUTOMATION** / *the solution* / **AI AUTOMATION** | marquee | cut | black |
-| 10 | 24.0–26.4 | *Away from your* / **PHONE?** | words, punch | whip up | grey |
-| 11 | 26.4–28.8 | *Taking a* / **BREAK?** | words, punch | cut | black |
-| 12 | 28.8–32.4 | **No worries.** / *AI takes care of* / [**your leads.**] | rise | iris | grey |
-| 13 | 32.4–35.4 | *Replies to every lead* / **0 → 24/7** | words, punch + counter | panel left | black |
-| 14 | 35.4–38.4 | *Answers in* / **60 → 3** / *seconds.* | punch + countdown | whip | grey |
-| 15 | 38.4–40.8 | *Qualifies* / [**every**] / *lead.* | chars → blur | cut | black |
-| 16 | 40.8–44.4 | *Books the* / **{call. → meeting. → deal.}** | rise → left | push | grey · left |
-| 17 | 44.4–46.8 | *Follows up* / **automatically.** | words | zoom | black |
-| 18 | 46.8–49.8 | *You* **rest.** / *AI* **works.** | fromLeft, fromRight | cut | grey |
-| 19 | 49.8–52.2 | **ZERO** / *missed leads.* | punch, tracking | whip down | black |
-| 20 | 52.2–55.2 | *Ready to* / **automate** / *your business?* | rise → up | panel up | grey |
-| 21 | 55.2–60.0 | *DM us* / [**"AI"**] / *to get started.* | words, punch (+ hit), fade | iris | black |
+Visual language: black / grey / light-grey only, white Inter Display + an italic serif accent
+(`*word*` → Instrument Serif), soft drifting light pools, film grain, and original UI mock-ups
+that animate like a real product demo.
+
+| # | Time (s) | Text | UI moment | Transition in |
+|---|---|---|---|---|
+| 1 | 0.0–3.6 | *Missing your* **leads?** | Wall of incoming DMs drifting in 3D | — |
+| 2 | 3.6–6.0 | At *2 a.m.* | Phone lock screen, notifications stacking | zoom |
+| 3 | 6.0–8.4 | Every missed DM is a *missed client.* | — | whip up |
+| 4 | 8.4–10.2 | **No worries.** | — | cut |
+| 5 | 10.2–13.2 | The fastest-growing trend in business? **AI.** | — | panel up |
+| 6 | 13.2–15.6 | Coaches are *integrating → automating → scaling* with AI. | — | push |
+| 7 | 15.6–19.2 | The solution? *AI automation.* | Command bar typing "Set up my AI assistant" | zoom |
+| 8 | 19.2–22.8 | It *learns* your business. | Knowledge card: offers, prices, FAQs, voice check off; ring to 100% | panel left |
+| 9 | 22.8–26.4 | *Replies* like you. | Prompt typed → DM thread, AI types and replies | whip |
+| 10 | 26.4–29.4 | Handles *objections.* | Price objection → AI offers payment plan | cut |
+| 11 | 29.4–31.8 | Away from your *phone?* | — | whip left |
+| 12 | 31.8–34.2 | Taking a *break?* | — | cut |
+| 13 | 34.2–37.2 | No worries. AI takes care of *your leads.* | Toggle "AI assistant" switches ON | iris |
+| 14 | 37.2–40.8 | Books calls. Closes *sales.* | Glossy pill "Call booked" → "Enrolled" | panel up (light) |
+| 15 | 40.8–43.8 | Your *sales command* center. | "Which leads should I call today?" → ranked leads | push |
+| 16 | 43.8–46.8 | *Always* in control. | Human takeover / Approval mode chips | zoom |
+| 17 | 46.8–50.4 | A *sales team* that never sleeps. | Toggle + lead avatars | cut |
+| 18 | 50.4–54.0 | Built for every coach. **Fitness. → Career. → Business.** | Program card swaps in sync | panel left (light) |
+| 19 | 54.0–56.4 | **ZERO** *missed leads.* | DM wall returns | whip down |
+| 20 | 56.4–60.0 | Comment *"AI"* to get your free demo. | Logo mark | iris |
+
+### UI visuals
+
+Add `visuals: [...]` to any scene (types in `src/engine/types.ts`). Every visual takes
+`at`, `out`, `x`, `y`, `anchor`, `scale` and `enter` (`card` · `fromRight` · `fromLeft` · `pop` · `fade` · `none`):
+
+`leadWall` · `phone {time, date, notifications}` · `input {text}` · `prompt {text}` ·
+`knowledge {title, tag, ringLabel, rows}` · `chat {header, messages:[{from:'lead'|'ai'|'note', text, at}]}` ·
+`toggle {label, onAt}` · `pill {texts, swapAt}` · `leadList {title, subtitle, query, leads}` ·
+`chips {items, activeAt}` · `avatars {letters}` · `programs {cards}` (syncs with the scene's `{a|b|c}` swap) · `logo`
+
+Use `textY` on a scene to lift the text and make room for a visual.
 
 ## 6. Project structure
 

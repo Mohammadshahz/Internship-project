@@ -1,6 +1,6 @@
 // Inline markup parser.  "Your **best idea** is _still_ [here]."  →  Word[]
 //
-//   **heavy**      _light_      *italic*      [underline]      ~~strike~~
+//   **heavy**      _light_      *serif italic accent*      [underline]      ~~strike~~
 //   ((circle))     {one|two|three} rolling swap     {#0..365} counter     \* escape
 
 import {theme} from '../config/theme';

@@ -1,5 +1,5 @@
 import React from 'react';
-import {theme} from '../config/theme';
+import {usePalette} from './palette';
 
 // SVG accents that draw themselves on (stroke-dashoffset with pathLength=1).
 // Drawn in real pixel coordinates so stroke weight stays even on any word shape.
@@ -30,10 +30,11 @@ export const Accent: React.FC<{
   /** extend to the right (em) to join the next word's accent */
   extendRight?: number;
 }> = ({kind, p, fontSize, width, extendRight = 0}) => {
+  const pal = usePalette();
   if (p <= 0 || width <= 0) return null;
   const common = {
     fill: 'none',
-    stroke: theme.colors.text,
+    stroke: pal.text,
     strokeLinecap: 'round' as const,
     pathLength: 1,
     strokeDasharray: '1 1',

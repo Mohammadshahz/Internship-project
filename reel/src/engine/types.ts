@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** Background colour tokens from the theme (see theme.ts → colors). */
-export type BgToken = 'black' | 'grey';
+export type BgToken = 'black' | 'grey' | 'light';
 
 /**
  * Background of a scene. Either a token, or an in-scene colour shift:
@@ -59,6 +59,46 @@ export type TransitionType =
   | 'zoom' //      zoom-through: old scene flies into camera
   | 'iris' //      circular reveal from the centre
   | 'dissolve'; // blur cross-dissolve
+
+export type Glow = 'none' | 'center' | 'low' | 'high' | 'corners' | 'split';
+
+// ─── UI mock-up visuals (product demo moments) ──────────────────────────────
+
+export interface VisualBase {
+  /** Seconds after the scene cut when it enters. */
+  at?: number;
+  /** Seconds after the cut when it leaves (blur out). */
+  out?: number;
+  /** Position as a fraction of the frame. x default 0.5, y default 0.62. */
+  x?: number;
+  y?: number;
+  /** 'center' (default) or 'top' (y is the top edge — for cards that grow). */
+  anchor?: 'center' | 'top';
+  scale?: number;
+  enter?: 'card' | 'fromRight' | 'fromLeft' | 'pop' | 'fade' | 'none';
+}
+
+export type VisualConfig = VisualBase &
+  (
+    | {type: 'leadWall'}
+    | {type: 'phone'; time: string; date: string; notifications: Array<{title: string; body: string}>}
+    | {type: 'input'; text: string; cps?: number}
+    | {type: 'prompt'; text: string; cps?: number}
+    | {type: 'knowledge'; title: string; tag?: string; rows: Array<{label: string; value: string; chip: string}>; ringLabel: string}
+    | {
+        type: 'chat';
+        light?: boolean;
+        header?: {name: string; tag?: string};
+        messages: Array<{from: 'lead' | 'ai' | 'note'; text: string; at: number}>;
+      }
+    | {type: 'toggle'; label?: string; onAt?: number; size?: number}
+    | {type: 'pill'; texts: string[]; swapAt?: number[]}
+    | {type: 'leadList'; title: string; subtitle: string; query: string; leads: Array<{name: string; score: number; note: string}>}
+    | {type: 'chips'; items: string[]; activeAt?: number}
+    | {type: 'avatars'; letters: string[]}
+    | {type: 'programs'; cards: Array<{title: string; meta: string; chips: string[]}>}
+    | {type: 'logo'; size?: number}
+  );
 
 export type Layout = 'center' | 'top' | 'bottom' | 'left' | 'right' | 'spread';
 export type Align = 'left' | 'center' | 'right';
@@ -125,6 +165,12 @@ export interface SceneConfig {
   wordStagger?: number;
   /** Seconds between lines (line-level animations). */
   lineStagger?: number;
+  /** Light pools behind the scene. Default 'center'. */
+  glow?: Glow;
+  /** Vertical centre of the text block (fraction of height) — move text up to make room for visuals. */
+  textY?: number;
+  /** UI mock-ups shown in this scene. */
+  visuals?: VisualConfig[];
   /** Keep the text block centred while lines build up (default true for centred layouts). */
   reflow?: boolean;
   /** Extra sound effects for this scene. */
@@ -200,6 +246,11 @@ export interface TScene {
   layout: Layout;
   camera: CameraMove;
   reflow: boolean;
+  glow: Glow;
+  textY: number;
+  visuals: VisualConfig[];
+  /** Slot swap frames of the first {a|b} line — visuals can sync to them. */
+  slotChanges: number[];
   lines: TLine[];
 }
 

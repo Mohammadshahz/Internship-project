@@ -317,6 +317,22 @@ export function computeTimeline(script: SceneConfig[], transcript?: TranscriptWo
       typeof x === 'string' ? addSfx(x, cut) : addSfx(x.name, cut + sec(x.at ?? 0), x.volume ?? 1),
     );
 
+    // Visual sounds
+    const visuals = s.visuals ?? [];
+    if (auto)
+      visuals.forEach((v) => {
+        const at = cut + sec(v.at ?? 0);
+        if (v.type === 'phone') v.notifications.forEach((_, i) => addSfx('tick', at + 14 + i * 9, 0.8));
+        else if (v.type === 'pill') {
+          addSfx('pop', at + 4);
+          (v.swapAt ?? []).forEach((x) => addSfx('tick', cut + sec(x)));
+        } else if (v.type === 'toggle') addSfx('tick', cut + sec(v.onAt ?? (v.at ?? 0) + 0.5));
+        else if (v.type === 'chips') addSfx('tick', cut + sec(v.activeAt ?? (v.at ?? 0) + 0.6), 0.7);
+        else if (v.type === 'chat') v.messages.forEach((m) => addSfx('pop', cut + sec(m.at), 0.45));
+        else if (v.type === 'logo' || v.type === 'avatars') addSfx('pop', at + 2, 0.6);
+        else if (v.type !== 'leadWall') addSfx('swoosh', at - 2, 0.55);
+      });
+
     const layout = s.layout ?? 'center';
     return {
       index: si,
@@ -329,6 +345,10 @@ export function computeTimeline(script: SceneConfig[], transcript?: TranscriptWo
       layout,
       camera: s.camera ?? 'push',
       reflow: s.reflow ?? (layout === 'center' || layout === 'left' || layout === 'right'),
+      glow: s.glow ?? 'center',
+      textY: s.textY ?? theme.safe.centerY,
+      visuals,
+      slotChanges: lines.find((l) => l.slotChanges.length)?.slotChanges ?? [],
       lines,
     };
   });

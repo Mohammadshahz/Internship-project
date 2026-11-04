@@ -11,10 +11,21 @@ export const theme = {
   /** Tempo of the music. Scene `beats` are converted with this, so cuts land on the beat. */
   bpm: 100,
 
+  /** Scene backgrounds. Each has its own text + accent colour so contrast is always right. */
   colors: {
-    black: '#0B0B0B', // primary background
-    grey: '#4A4A4A', // secondary background
-    text: '#FFFFFF',
+    black: '#060606',
+    grey: '#1B1B1B',
+    light: '#E6E6E6',
+  },
+  palettes: {
+    black: {text: '#FFFFFF', accent: '#CFCFCF', muted: 'rgba(255,255,255,0.5)', glow: 'rgba(255,255,255,0.13)'},
+    grey: {text: '#FFFFFF', accent: '#D8D8D8', muted: 'rgba(255,255,255,0.55)', glow: 'rgba(255,255,255,0.12)'},
+    light: {text: '#0A0A0A', accent: '#4A4A4A', muted: 'rgba(0,0,0,0.5)', glow: 'rgba(255,255,255,0.95)'},
+  },
+  /** UI mock-up cards */
+  cards: {
+    dark: {bg: '#111111', border: 'rgba(255,255,255,0.08)', text: '#F2F2F2', muted: 'rgba(255,255,255,0.5)', chip: '#262626'},
+    light: {bg: '#F7F7F7', border: 'rgba(0,0,0,0.06)', text: '#0E0E0E', muted: 'rgba(0,0,0,0.45)', chip: '#E4E4E4'},
   },
 
   /** Adds a soft light falloff + film grain so flat colour feels filmed, not flat. */
@@ -25,6 +36,9 @@ export const theme = {
 
   type: {
     family: 'Reel Display', // registered in engine/fonts.ts (Inter Display, bundled)
+    /** *accent* words use this italic serif (Instrument Serif, bundled) */
+    serif: 'Reel Serif',
+    serifScale: 1.12, // serif has a smaller x-height; scale it to sit with the sans
     baseWeight: 500, //   unmarked words
     heavyWeight: 900, //  **heavy**
     lightWeight: 200, //  _light_

@@ -6,6 +6,8 @@ import {clamp01, ease, prog} from '../engine/motion';
 import type {TScene} from '../engine/types';
 import {SceneBackground} from './Background';
 import {TextLine} from './TextLine';
+import {PaletteContext, paletteFor} from './palette';
+import {Visual} from './visuals/Visual';
 
 const W = theme.width;
 const H = theme.height;
@@ -45,7 +47,7 @@ export const Scene: React.FC<{scene: TScene; t: number}> = ({scene, t}) => {
         ? top0
         : scene.layout === 'bottom'
           ? bottom0 - fullTotal
-          : H * theme.safe.centerY - (scene.reflow ? total : fullTotal) / 2;
+          : H * scene.textY - (scene.reflow ? total : fullTotal) / 2;
     metrics.forEach((m, i) => {
       tops.push(y);
       y += scene.reflow ? heights[i] : m.h;
@@ -70,14 +72,19 @@ export const Scene: React.FC<{scene: TScene; t: number}> = ({scene, t}) => {
   }
 
   return (
-    <AbsoluteFill style={{overflow: 'hidden'}}>
-      <SceneBackground bg={scene.background} t={t} />
-      <AbsoluteFill style={{transform: camera, transformOrigin: `50% ${theme.safe.centerY * 100}%`, fontFamily: `"${theme.type.family}"`}}>
-        {scene.lines.map((line, i) => (
-          <TextLine key={i} line={line} t={t} fontSize={metrics[i].fs} top={tops[i]} height={metrics[i].h} sceneDur={scene.dur} />
-        ))}
+    <PaletteContext.Provider value={paletteFor(scene.background, t)}>
+      <AbsoluteFill style={{overflow: 'hidden'}}>
+        <SceneBackground bg={scene.background} t={t} glow={scene.glow} />
+        <AbsoluteFill style={{transform: camera, transformOrigin: `50% ${scene.textY * 100}%`, fontFamily: `"${theme.type.family}"`}}>
+          {scene.visuals.map((v, i) => (
+            <Visual key={`v${i}`} v={v} t={t} scene={scene} />
+          ))}
+          {scene.lines.map((line, i) => (
+            <TextLine key={i} line={line} t={t} fontSize={metrics[i].fs} top={tops[i]} height={metrics[i].h} sceneDur={scene.dur} />
+          ))}
+        </AbsoluteFill>
       </AbsoluteFill>
-    </AbsoluteFill>
+    </PaletteContext.Provider>
   );
 };
 

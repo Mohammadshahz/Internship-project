@@ -13,11 +13,13 @@ export const trackingFor = (weight: number) =>
 /** Width of a run of text in em (1em = font size). */
 export const textEm = (text: string, style: Pick<Style, 'weight' | 'italic'>, extraTracking = 0) => {
   const key = `${style.weight}|${style.italic}|${extraTracking}|${text}`;
+  const serif = style.italic;
   const hit = cache.get(key);
   if (hit !== undefined) return hit;
   if (!ctx) ctx = document.createElement('canvas').getContext('2d');
-  ctx!.font = `${style.italic ? 'italic ' : ''}${style.weight} ${REF}px "${theme.type.family}"`;
-  const w = ctx!.measureText(text).width / REF + [...text].length * (trackingFor(style.weight) + extraTracking);
+  ctx!.font = serif ? `italic 400 ${REF}px "${theme.type.serif}"` : `${style.weight} ${REF}px "${theme.type.family}"`;
+  const scale = serif ? theme.type.serifScale : 1;
+  const w = (ctx!.measureText(text).width / REF + [...text].length * ((serif ? -0.01 : trackingFor(style.weight)) + extraTracking)) * scale;
   cache.set(key, w);
   return w;
 };

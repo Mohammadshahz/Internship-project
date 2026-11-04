@@ -5,7 +5,7 @@ Config.setVideoImageFormat('jpeg');
 Config.setJpegQuality(95);
 Config.setCodec('h264');
 Config.setPixelFormat('yuv420p');
-Config.setCrf(19);
+Config.setCrf(20);
 Config.setColorSpace('bt709');
 Config.setAudioCodec('aac');
 Config.setAudioBitrate('320k');

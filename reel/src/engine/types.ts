@@ -4,11 +4,11 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 /** Background colour tokens from the theme (see theme.ts → colors). */
-export type BgToken = 'blue' | 'navy';
+export type BgToken = 'black' | 'grey';
 
 /**
  * Background of a scene. Either a token, or an in-scene colour shift:
- * `{ from: 'blue', to: 'navy', at: 1.2, over: 0.5 }`
+ * `{ from: 'black', to: 'grey', at: 1.2, over: 0.5 }`
  */
 export type Background =
   | BgToken

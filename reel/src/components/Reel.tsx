@@ -46,7 +46,7 @@ export const Reel: React.FC<ReelProps> = ({transcript, showSafeZone}) => {
   }, [frame, timeline]);
 
   return (
-    <AbsoluteFill style={{backgroundColor: theme.colors.blue, overflow: 'hidden'}}>
+    <AbsoluteFill style={{backgroundColor: theme.colors.black, overflow: 'hidden'}}>
       {ready
         ? visible.map(({index, t, side, kick}) => (
             <AbsoluteFill key={index}>
@@ -54,7 +54,7 @@ export const Reel: React.FC<ReelProps> = ({transcript, showSafeZone}) => {
                 <AbsoluteFill style={{transform: [side.inner, kick].filter(Boolean).join(' ') || undefined}}>
                   <Scene scene={timeline.scenes[index]} t={t} />
                 </AbsoluteFill>
-                {side.shade ? <AbsoluteFill style={{backgroundColor: '#000418', opacity: side.shade}} /> : null}
+                {side.shade ? <AbsoluteFill style={{backgroundColor: '#000000', opacity: side.shade}} /> : null}
               </MotionBlur>
             </AbsoluteFill>
           ))

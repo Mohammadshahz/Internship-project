@@ -13,12 +13,12 @@ out/cover.png   ← Instagram cover frame
 
 ## 1. Visual language
 
-The look is built around the brief's style: flat electric-blue full-bleed frames, oversized white
+The look is built around the brief's style: flat black and grey full-bleed frames, oversized white
 type, and every cut on the beat.
 
 | Element | Rule used in this system |
 |---|---|
-| **Colour** | Only two backgrounds: `#0647FF` electric blue and `#071B49` navy, alternating scene to scene. Text is always `#FFFFFF`. A very soft light falloff and animated film grain stop the flat colour looking like a slide. |
+| **Colour** | Only two backgrounds: `#0B0B0B` black and `#4A4A4A` grey, alternating scene to scene. Text is always `#FFFFFF`. A very soft light falloff and animated film grain stop the flat colour looking like a slide. |
 | **Type** | Inter Display (bundled, SIL OFL). Emphasis comes from **weight and size, never colour**: ExtraLight 200 ↔ Medium 500 ↔ Black 900. Heavier weights get tighter tracking (−0.045 em), the way a typesetter would set them. |
 | **Composition** | Lines are justified to the frame width (`size: 'fit'`), so a short heavy word gets huge and a long light phrase gets small. That gives the "stacked poster" look. Alternative layouts are editorial `spread` (top-left / centre / bottom-right), left-aligned, top and bottom. Everything stays inside the Instagram UI-safe area. |
 | **Rhythm** | 100 BPM grid, 1 beat = 18 frames. Scenes are 3–7 beats long, so hard cuts and swaps land on the kick. Words arrive about 90 ms apart, which matches speaking cadence. |
@@ -48,7 +48,7 @@ Edit **`src/config/script.ts`**. Each scene is one beat of the story:
 {
   beats: 5,                       // or duration: 2.4 (seconds)
   transition: 'whip',             // how we get INTO this scene
-  background: 'navy',
+  background: 'grey',
   enter: 'rise',                  // default for every line
   exit: 'up',
   lines: [
@@ -133,17 +133,17 @@ The bundled music bed and SFX are **original placeholders** synthesised with ffm
 
 | # | Time | Text | Enter / exit | Transition in | Layout / background |
 |---|---|---|---|---|---|
-| 1 | 0.0–3.0 s | *Your best idea* / is **still** / **in your head.** | rise → up | — | centre, justified stack · blue |
-| 2 | 3.0–5.4 | *Not because* / it's ~~**bad.**~~ | words | cut + kick | centre, camera pull · navy |
-| 3 | 5.4–9.0 | *Because you're* / **WAITING** (tracking keeps spreading) / *for the perfect moment.* | words, tracking, fade | whip left | centre · blue |
-| 4 | 9.0–12.0 | *There is* / **NO** / *perfect moment.* | fromLeft, punch, fromRight | panel up | spread, opposing drift · navy |
-| 5 | 12.0–15.6 | *Start* / **{messy. → small. → now.}** | rise → left | zoom-through | left · blue |
-| 6 | 15.6–19.2 | **PROGRESS** / *beats* / **PERFECTION** | marquee, alternating | cut + kick | full-bleed · navy |
-| 7 | 19.2–21.6 | One step. / *Every single* / [**day.**] | pop | push | centre · blue |
-| 8 | 21.6–24.6 | **1 → 365** / *days from now* | punch, tracking | whip up | centre · navy |
-| 9 | 24.6–27.0 | *you'll* / ((**thank**)) / *yourself.* | chars → blur | panel left | centre · blue |
-| 10 | 27.0–28.8 | *So* / **build it.** | words, punch (+ hit) | cut + kick | centre · navy |
-| 11 | 28.8–33.0 | *Follow for more* / [**@yourhandle**] | rise | iris | centre, camera pull · blue |
+| 1 | 0.0–3.0 s | *Your best idea* / is **still** / **in your head.** | rise → up | — | centre, justified stack · black |
+| 2 | 3.0–5.4 | *Not because* / it's ~~**bad.**~~ | words | cut + kick | centre, camera pull · grey |
+| 3 | 5.4–9.0 | *Because you're* / **WAITING** (tracking keeps spreading) / *for the perfect moment.* | words, tracking, fade | whip left | centre · black |
+| 4 | 9.0–12.0 | *There is* / **NO** / *perfect moment.* | fromLeft, punch, fromRight | panel up | spread, opposing drift · grey |
+| 5 | 12.0–15.6 | *Start* / **{messy. → small. → now.}** | rise → left | zoom-through | left · black |
+| 6 | 15.6–19.2 | **PROGRESS** / *beats* / **PERFECTION** | marquee, alternating | cut + kick | full-bleed · grey |
+| 7 | 19.2–21.6 | One step. / *Every single* / [**day.**] | pop | push | centre · black |
+| 8 | 21.6–24.6 | **1 → 365** / *days from now* | punch, tracking | whip up | centre · grey |
+| 9 | 24.6–27.0 | *you'll* / ((**thank**)) / *yourself.* | chars → blur | panel left | centre · black |
+| 10 | 27.0–28.8 | *So* / **build it.** | words, punch (+ hit) | cut + kick | centre · grey |
+| 11 | 28.8–33.0 | *Follow for more* / [**@yourhandle**] | rise | iris | centre, camera pull · black |
 
 ## 6. Project structure
 

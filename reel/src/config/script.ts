@@ -26,7 +26,7 @@
 //    exit               none · up · down · left · right · scale · blur · fade
 //    transition         cut · whip · whipLeft · whipRight · whipUp · whipDown · push ·
 //                       panel · panelUp · panelDown · panelLeft · panelRight · zoom · iris · dissolve
-//    background         'blue' | 'navy' | { from: 'blue', to: 'navy', at: 1, over: 0.5 }
+//    background         'black' | 'grey' | { from: 'black', to: 'grey', at: 1, over: 0.5 }
 //    layout             center · top · bottom · left · right · spread
 //    camera             push · pull · drift · none
 //    delay, wordStagger, lineStagger   (seconds)
@@ -48,7 +48,7 @@ export const script: SceneConfig[] = [
   {
     id: 'hook',
     beats: 5,
-    background: 'blue',
+    background: 'black',
     enter: 'rise',
     exit: 'up',
     lines: ['_Your best idea_', 'is **still**', '**in your head.**'],
@@ -59,7 +59,7 @@ export const script: SceneConfig[] = [
     id: 'not-bad',
     beats: 4,
     transition: 'cut',
-    background: 'navy',
+    background: 'grey',
     enter: 'words',
     camera: 'pull',
     lines: ['_Not because_', "it's ~~**bad.**~~"],
@@ -70,7 +70,7 @@ export const script: SceneConfig[] = [
     id: 'waiting',
     beats: 6,
     transition: 'whip',
-    background: 'blue',
+    background: 'black',
     lines: [
       {text: "_Because you're_", enter: 'words', size: 96},
       {text: '**WAITING**', enter: 'tracking', drift: {tracking: 0.11}},
@@ -83,7 +83,7 @@ export const script: SceneConfig[] = [
     id: 'no-moment',
     beats: 5,
     transition: 'panelUp',
-    background: 'navy',
+    background: 'grey',
     layout: 'spread',
     camera: 'drift',
     lines: [
@@ -98,7 +98,7 @@ export const script: SceneConfig[] = [
     id: 'start',
     beats: 6,
     transition: 'zoom',
-    background: 'blue',
+    background: 'black',
     layout: 'left',
     enter: 'rise',
     exit: 'left',
@@ -110,7 +110,7 @@ export const script: SceneConfig[] = [
     id: 'progress',
     beats: 6,
     transition: 'cut',
-    background: 'navy',
+    background: 'grey',
     enter: 'marquee',
     camera: 'none',
     lineStagger: 0.12,
@@ -126,7 +126,7 @@ export const script: SceneConfig[] = [
     id: 'daily',
     beats: 4,
     transition: 'push',
-    background: 'blue',
+    background: 'black',
     enter: 'pop',
     lines: ['One step.', '_Every single_', '[**day.**]'],
   },
@@ -136,7 +136,7 @@ export const script: SceneConfig[] = [
     id: 'counter',
     beats: 5,
     transition: 'whipUp',
-    background: 'navy',
+    background: 'grey',
     lines: [
       {text: '**{#1..365}**', enter: 'punch'},
       {text: '_days from now_', enter: 'tracking', size: 92, at: 0.35},
@@ -148,7 +148,7 @@ export const script: SceneConfig[] = [
     id: 'thank',
     beats: 4,
     transition: 'panelLeft',
-    background: 'blue',
+    background: 'black',
     enter: 'chars',
     exit: 'blur',
     lines: ["_you'll_", '**((thank))**', '_yourself._'],
@@ -159,7 +159,7 @@ export const script: SceneConfig[] = [
     id: 'build',
     beats: 3,
     transition: 'cut',
-    background: 'navy',
+    background: 'grey',
     lines: [
       {text: '_So_', enter: 'words', size: 140},
       {text: '**build it.**', enter: 'punch', at: 0.3},
@@ -172,7 +172,7 @@ export const script: SceneConfig[] = [
     id: 'cta',
     beats: 7,
     transition: 'iris',
-    background: 'blue',
+    background: 'black',
     enter: 'rise',
     camera: 'pull',
     lines: [{text: '_Follow for more_', size: 92}, {text: '[**@yourhandle**]', size: 150}],
@@ -182,5 +182,5 @@ export const script: SceneConfig[] = [
 /** Scene used for the Instagram cover still (`npm run cover`). */
 export const cover: SceneConfig = {
   lines: ['_Your best idea_', 'is **still**', '**in your head.**'],
-  background: 'blue',
+  background: 'black',
 };

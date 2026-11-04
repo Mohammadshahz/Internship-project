@@ -12,8 +12,8 @@ export const theme = {
   bpm: 100,
 
   colors: {
-    blue: '#0647FF', // primary background
-    navy: '#071B49', // secondary background
+    black: '#0B0B0B', // primary background
+    grey: '#4A4A4A', // secondary background
     text: '#FFFFFF',
   },
 

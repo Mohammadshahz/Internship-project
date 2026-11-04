@@ -325,7 +325,7 @@ export function computeTimeline(script: SceneConfig[], transcript?: TranscriptWo
       dur,
       transition,
       transitionFrames,
-      background: s.background ?? (si % 2 === 0 ? 'blue' : 'navy'),
+      background: s.background ?? (si % 2 === 0 ? 'black' : 'grey'),
       layout,
       camera: s.camera ?? 'push',
       reflow: s.reflow ?? (layout === 'center' || layout === 'left' || layout === 'right'),

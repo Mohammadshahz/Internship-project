@@ -5,7 +5,7 @@ A Remotion + React + TypeScript system for making cinematic kinetic-typography I
 type sizing, animation, transitions, motion blur, sound effects and voiceover sync.
 
 ```
-out/reel.mp4    ← final export (33 s, H.264 High / yuv420p / BT.709, AAC 320k)
+out/reel.mp4    ← final export (60 s, H.264 High / yuv420p / BT.709, AAC 320k)
 out/cover.png   ← Instagram cover frame
 ```
 
@@ -129,21 +129,31 @@ All audio settings are in **`src/config/audio.ts`**. Files go in `public/audio/`
 The bundled music bed and SFX are **original placeholders** synthesised with ffmpeg
 (`npm run audio:placeholders`). Replace them with licensed audio before publishing.
 
-## 5. Scene breakdown (default script, 100 BPM)
+## 5. Scene breakdown (AI automation script, 60 s at 100 BPM)
 
-| # | Time | Text | Enter / exit | Transition in | Layout / background |
+| # | Time (s) | Text | Animation | Transition in | Background |
 |---|---|---|---|---|---|
-| 1 | 0.0–3.0 s | *Your best idea* / is **still** / **in your head.** | rise → up | — | centre, justified stack · black |
-| 2 | 3.0–5.4 | *Not because* / it's ~~**bad.**~~ | words | cut + kick | centre, camera pull · grey |
-| 3 | 5.4–9.0 | *Because you're* / **WAITING** (tracking keeps spreading) / *for the perfect moment.* | words, tracking, fade | whip left | centre · black |
-| 4 | 9.0–12.0 | *There is* / **NO** / *perfect moment.* | fromLeft, punch, fromRight | panel up | spread, opposing drift · grey |
-| 5 | 12.0–15.6 | *Start* / **{messy. → small. → now.}** | rise → left | zoom-through | left · black |
-| 6 | 15.6–19.2 | **PROGRESS** / *beats* / **PERFECTION** | marquee, alternating | cut + kick | full-bleed · grey |
-| 7 | 19.2–21.6 | One step. / *Every single* / [**day.**] | pop | push | centre · black |
-| 8 | 21.6–24.6 | **1 → 365** / *days from now* | punch, tracking | whip up | centre · grey |
-| 9 | 24.6–27.0 | *you'll* / ((**thank**)) / *yourself.* | chars → blur | panel left | centre · black |
-| 10 | 27.0–28.8 | *So* / **build it.** | words, punch (+ hit) | cut + kick | centre · grey |
-| 11 | 28.8–33.0 | *Follow for more* / [**@yourhandle**] | rise | iris | centre, camera pull · black |
+| 1 | 0.0–2.4 | *Missing your* / **LEADS?** | words, punch | — | black |
+| 2 | 2.4–5.4 | *Every* **missed call** / *is a* / **missed client.** | rise → up | cut | grey |
+| 3 | 5.4–7.2 | **No worries.** | punch | cut | black |
+| 4 | 7.2–9.6 | *Here's the* / **SOLUTION** | words, tracking | whip | grey |
+| 5 | 9.6–12.6 | *The* / **FASTEST** / **TREND** / *in business right now.* | fromLeft, punch ×2, fromRight | panel up | black · spread |
+| 6 | 12.6–14.4 | **AI.** | punch (+ hit) | zoom | grey |
+| 7 | 14.4–18.0 | *Businesses are* / **{integrating → automating → scaling}** / *with AI.* | rise, word swap | cut | black · left |
+| 8 | 18.0–20.4 | *Will you go with* / **the trend?** | pop | push | grey |
+| 9 | 20.4–24.0 | **AI AUTOMATION** / *the solution* / **AI AUTOMATION** | marquee | cut | black |
+| 10 | 24.0–26.4 | *Away from your* / **PHONE?** | words, punch | whip up | grey |
+| 11 | 26.4–28.8 | *Taking a* / **BREAK?** | words, punch | cut | black |
+| 12 | 28.8–32.4 | **No worries.** / *AI takes care of* / [**your leads.**] | rise | iris | grey |
+| 13 | 32.4–35.4 | *Replies to every lead* / **0 → 24/7** | words, punch + counter | panel left | black |
+| 14 | 35.4–38.4 | *Answers in* / **60 → 3** / *seconds.* | punch + countdown | whip | grey |
+| 15 | 38.4–40.8 | *Qualifies* / [**every**] / *lead.* | chars → blur | cut | black |
+| 16 | 40.8–44.4 | *Books the* / **{call. → meeting. → deal.}** | rise → left | push | grey · left |
+| 17 | 44.4–46.8 | *Follows up* / **automatically.** | words | zoom | black |
+| 18 | 46.8–49.8 | *You* **rest.** / *AI* **works.** | fromLeft, fromRight | cut | grey |
+| 19 | 49.8–52.2 | **ZERO** / *missed leads.* | punch, tracking | whip down | black |
+| 20 | 52.2–55.2 | *Ready to* / **automate** / *your business?* | rise → up | panel up | grey |
+| 21 | 55.2–60.0 | *DM us* / [**"AI"**] / *to get started.* | words, punch (+ hit), fade | iris | black |
 
 ## 6. Project structure
 

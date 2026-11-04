@@ -44,143 +44,230 @@
 import type {SceneConfig} from '../engine/types';
 
 export const script: SceneConfig[] = [
-  // 01 — Hook: justified stack, three weights, built word by word
+  // ══ HOOK 1 — the problem (0 – 9.6 s) ═══════════════════════════════════════
   {
-    id: 'hook',
-    beats: 5,
-    background: 'black',
-    enter: 'rise',
-    exit: 'up',
-    lines: ['_Your best idea_', 'is **still**', '**in your head.**'],
-  },
-
-  // 02 — Contradiction, with a strike-through drawn over "bad."
-  {
-    id: 'not-bad',
+    id: 'missing-leads',
     beats: 4,
-    transition: 'cut',
-    background: 'grey',
-    enter: 'words',
-    camera: 'pull',
-    lines: ['_Not because_', "it's ~~**bad.**~~"],
-  },
-
-  // 03 — Time stretches: the word literally spreads out while you wait
-  {
-    id: 'waiting',
-    beats: 6,
-    transition: 'whip',
     background: 'black',
     lines: [
-      {text: "_Because you're_", enter: 'words', size: 96},
-      {text: '**WAITING**', enter: 'tracking', drift: {tracking: 0.11}},
-      {text: '_for the perfect moment._', enter: 'fade', size: 64, at: 1.15},
+      {text: '_Missing your_', enter: 'words', size: 120},
+      {text: '**LEADS?**', enter: 'punch', at: 0.35},
+    ],
+  },
+  {
+    id: 'missed-call',
+    beats: 5,
+    transition: 'cut',
+    background: 'grey',
+    enter: 'rise',
+    exit: 'up',
+    lines: ['_Every_ **missed call**', {text: '_is a_', size: 120}, '**missed client.**'],
+  },
+  {
+    id: 'no-worries-1',
+    beats: 3,
+    transition: 'cut',
+    background: 'black',
+    lines: [{text: '**No worries.**', enter: 'punch'}],
+  },
+  {
+    id: 'solution',
+    beats: 4,
+    transition: 'whip',
+    background: 'grey',
+    lines: [
+      {text: "_Here's the_", enter: 'words', size: 110},
+      {text: '**SOLUTION**', enter: 'tracking', at: 0.3, drift: {tracking: 0.06}},
     ],
   },
 
-  // 04 — Editorial spread: top-left / huge centre / bottom-right
+  // ══ THE TREND (9.6 – 20.4 s) ═══════════════════════════════════════════════
   {
-    id: 'no-moment',
+    id: 'fastest-trend',
     beats: 5,
     transition: 'panelUp',
-    background: 'grey',
+    background: 'black',
     layout: 'spread',
     camera: 'drift',
     lines: [
-      {text: '_There is_', size: 120, enter: 'fromLeft', drift: {x: 40}},
-      {text: '**NO**', size: 520, enter: 'punch', at: 0.45},
-      {text: '_perfect moment._', size: 92, enter: 'fromRight', at: 0.85, drift: {x: -40}},
+      {text: '_The_', size: 130, enter: 'fromLeft', drift: {x: 40}},
+      {text: '**FASTEST**', enter: 'punch', at: 0.35},
+      {text: '**TREND**', enter: 'punch', at: 0.75},
+      {text: '_in business right now._', size: 70, enter: 'fromRight', at: 1.1, drift: {x: -40}},
     ],
   },
-
-  // 05 — Rolling swap: "Start" stays, the last word keeps changing on the beat
   {
-    id: 'start',
-    beats: 6,
+    id: 'ai',
+    beats: 3,
     transition: 'zoom',
+    background: 'grey',
+    camera: 'pull',
+    lines: [{text: '**AI.**', enter: 'punch', size: 620}],
+    sfx: 'hit',
+  },
+  {
+    id: 'integrating',
+    beats: 6,
+    transition: 'cut',
     background: 'black',
     layout: 'left',
     enter: 'rise',
-    exit: 'left',
-    lines: [{text: '_Start_', size: 220}, {text: '**{messy.|small.|now.}**', size: 250}],
+    lines: [
+      {text: '_Businesses are_', size: 120},
+      {text: '**{integrating|automating|scaling}**'},
+      {text: '_with AI._', size: 120},
+    ],
+  },
+  {
+    id: 'ready-trend',
+    beats: 4,
+    transition: 'push',
+    background: 'grey',
+    enter: 'pop',
+    lines: ['_Will you go with_', '**the trend?**'],
   },
 
-  // 06 — Marquee wall: three lines scrolling in opposite directions
+  // ══ HOOK 2 — the solution (20.4 – 32.4 s) ══════════════════════════════════
   {
-    id: 'progress',
+    id: 'ai-automation',
     beats: 6,
     transition: 'cut',
-    background: 'grey',
+    background: 'black',
     enter: 'marquee',
     camera: 'none',
     lineStagger: 0.12,
     lines: [
-      {text: '**PROGRESS**', size: 300, speed: 320},
-      {text: '_beats_', size: 190, speed: 220},
-      {text: '**PERFECTION**', size: 300, speed: 320},
+      {text: '**AI AUTOMATION**', size: 260, speed: 320},
+      {text: '_the solution_', size: 150, speed: 220},
+      {text: '**AI AUTOMATION**', size: 260, speed: 320},
     ],
   },
-
-  // 07 — Word-by-word with a self-drawing underline
   {
-    id: 'daily',
+    id: 'away-phone',
     beats: 4,
-    transition: 'push',
-    background: 'black',
-    enter: 'pop',
-    lines: ['One step.', '_Every single_', '[**day.**]'],
-  },
-
-  // 08 — Counter
-  {
-    id: 'counter',
-    beats: 5,
     transition: 'whipUp',
     background: 'grey',
     lines: [
-      {text: '**{#1..365}**', enter: 'punch'},
-      {text: '_days from now_', enter: 'tracking', size: 92, at: 0.35},
+      {text: '_Away from your_', enter: 'words', size: 110},
+      {text: '**PHONE?**', enter: 'punch', at: 0.4},
     ],
   },
-
-  // 09 — Letter cascade, circled keyword
   {
-    id: 'thank',
+    id: 'break',
     beats: 4,
+    transition: 'cut',
+    background: 'black',
+    lines: [
+      {text: '_Taking a_', enter: 'words', size: 110},
+      {text: '**BREAK?**', enter: 'punch', at: 0.4},
+    ],
+  },
+  {
+    id: 'ai-takes-care',
+    beats: 6,
+    transition: 'iris',
+    background: 'grey',
+    enter: 'rise',
+    lines: ['**No worries.**', '_AI takes care of_', '[**your leads.**]'],
+  },
+
+  // ══ WHAT IT DOES (32.4 – 46.8 s) ═══════════════════════════════════════════
+  {
+    id: 'always-on',
+    beats: 5,
     transition: 'panelLeft',
+    background: 'black',
+    lines: [
+      {text: '_Replies to every lead_', enter: 'words', size: 84},
+      {text: '**{#0..24}/7**', enter: 'punch', at: 0.35},
+    ],
+  },
+  {
+    id: 'speed',
+    beats: 5,
+    transition: 'whip',
+    background: 'grey',
+    lines: [
+      {text: '_Answers in_', enter: 'words', size: 110},
+      {text: '**{#60..3}**', enter: 'punch', at: 0.3, countFor: 1.6},
+      {text: '_seconds._', enter: 'tracking', size: 110, at: 0.6},
+    ],
+  },
+  {
+    id: 'qualifies',
+    beats: 4,
+    transition: 'cut',
     background: 'black',
     enter: 'chars',
     exit: 'blur',
-    lines: ["_you'll_", '**((thank))**', '_yourself._'],
+    lines: ['_Qualifies_', '[**every**]', '_lead._'],
+  },
+  {
+    id: 'books',
+    beats: 6,
+    transition: 'push',
+    background: 'grey',
+    layout: 'left',
+    enter: 'rise',
+    exit: 'left',
+    lines: [{text: '_Books the_', size: 150}, {text: '**{call.|meeting.|deal.}**', size: 230}],
+  },
+  {
+    id: 'follow-up',
+    beats: 4,
+    transition: 'zoom',
+    background: 'black',
+    enter: 'words',
+    lines: ['_Follows up_', '**automatically.**'],
   },
 
-  // 10 — Impact
+  // ══ PAYOFF + CTA (46.8 – 60 s) ═════════════════════════════════════════════
   {
-    id: 'build',
-    beats: 3,
+    id: 'you-rest',
+    beats: 5,
     transition: 'cut',
     background: 'grey',
     lines: [
-      {text: '_So_', enter: 'words', size: 140},
-      {text: '**build it.**', enter: 'punch', at: 0.3},
+      {text: '_You_ **rest.**', enter: 'fromLeft'},
+      {text: '_AI_ **works.**', enter: 'fromRight', at: 0.9},
     ],
-    sfx: [{name: 'hit', at: 0.3}],
   },
-
-  // 11 — Call to action
+  {
+    id: 'zero',
+    beats: 4,
+    transition: 'whipDown',
+    background: 'black',
+    lines: [
+      {text: '**ZERO**', enter: 'punch'},
+      {text: '_missed leads._', enter: 'tracking', size: 100, at: 0.35},
+    ],
+  },
+  {
+    id: 'ready',
+    beats: 5,
+    transition: 'panelUp',
+    background: 'grey',
+    enter: 'rise',
+    exit: 'up',
+    lines: ['_Ready to_', '**automate**', '_your business?_'],
+  },
   {
     id: 'cta',
-    beats: 7,
+    beats: 8,
     transition: 'iris',
     background: 'black',
-    enter: 'rise',
     camera: 'pull',
-    lines: [{text: '_Follow for more_', size: 92}, {text: '[**@yourhandle**]', size: 150}],
+    lines: [
+      {text: '_DM us_', enter: 'words', size: 120},
+      {text: '[**"AI"**]', enter: 'punch', size: 340, at: 0.35},
+      {text: '_to get started._', enter: 'fade', size: 80, at: 0.9},
+    ],
+    sfx: [{name: 'hit', at: 0.35}],
   },
 ];
 
 /** Scene used for the Instagram cover still (`npm run cover`). */
 export const cover: SceneConfig = {
-  lines: ['_Your best idea_', 'is **still**', '**in your head.**'],
+  lines: ['_Missing your_', '**LEADS?**', '_AI fixes that._'],
   background: 'black',
 };

@@ -37,7 +37,7 @@ ffmpeg $Q -f lavfi -i "anoisesrc=d=1.2:c=white:r=$SR:a=0.5" \
 
 # ---------- MUSIC BED (100 BPM = 0.6 s per beat) ----------
 B=0.6
-DUR=40
+DUR=75
 # kick on every beat
 ffmpeg $Q -f lavfi -i "aevalsrc='0.85*sin(2*PI*(46*mod(t,$B)+(95/30)*(1-exp(-30*mod(t,$B)))))*exp(-7*mod(t,$B))':s=$SR:d=$DUR" \
   -af "lowpass=f=700" /tmp/_kick.wav
